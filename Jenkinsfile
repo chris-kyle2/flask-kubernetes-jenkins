@@ -1,16 +1,16 @@
 pipeline{
     agent any
     environment{
-        IMAGE_NAME = '22monk/jenkins-pipeline'
-        IMAGE_TAG = "${IMAGE_NAME}:${env.GIT_COMMIT}"
-        KUBECONFIG = credentials('kubeconfig')
+        // IMAGE_NAME = '22monk/jenkins-pipeline'
+        // IMAGE_TAG = "${IMAGE_NAME}:${env.GIT_COMMIT}"
+        // KUBECONFIG = credentials('kubeconfig')
 
     }
     stages{
         stage('Hello world'){
             steps{
                 echo 'Hello world'
-                
+
             }
         }
         stage('login to docker hub'){
