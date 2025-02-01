@@ -15,23 +15,63 @@ DEVOPS_STAGES = [
 
 HTML_TEMPLATE = """
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps Lifecycle</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        h1 { color: #4CAF50; }
-        .stage { border: 1px solid #ddd; padding: 15px; margin: 10px; border-radius: 8px; display: inline-block; width: 250px; }
+        body { 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+            background: linear-gradient(135deg, #1e3c72, #2a5298); 
+            color: white;
+        }
+        h1 { 
+            margin: 20px 0; 
+            font-size: 2.5em; 
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .stage { 
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px; 
+            padding: 20px; 
+            width: 280px; 
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .stage:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        h3 { 
+            margin-bottom: 10px; 
+            font-size: 1.5em;
+        }
+        p { 
+            font-size: 1em; 
+            opacity: 0.9; 
+        }
     </style>
 </head>
 <body>
     <h1>DevOps Lifecycle</h1>
-    {% for stage in stages %}
-        <div class="stage">
-            <h3>{{ stage.name }}</h3>
-            <p>{{ stage.description }}</p>
-        </div>
-    {% endfor %}
+    <div class="container">
+        {% for stage in stages %}
+            <div class="stage">
+                <h3>{{ stage.name }}</h3>
+                <p>{{ stage.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
 """
