@@ -47,6 +47,7 @@ HTML_TEMPLATE = """
             width: 280px; 
             transition: transform 0.3s, background 0.3s;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
         .stage:hover {
             transform: scale(1.05);
@@ -60,6 +61,22 @@ HTML_TEMPLATE = """
             font-size: 1em; 
             opacity: 0.9; 
         }
+        .number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background: #FFD700;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -67,6 +84,7 @@ HTML_TEMPLATE = """
     <div class="container">
         {% for stage in stages %}
             <div class="stage">
+                <div class="number">{{ loop.index }}</div>
                 <h3>{{ stage.name }}</h3>
                 <p>{{ stage.description }}</p>
             </div>
