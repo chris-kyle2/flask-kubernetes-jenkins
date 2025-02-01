@@ -3,25 +3,25 @@ from flask import Flask, render_template_string
 app = Flask(__name__)
 
 DEVOPS_STAGES = [
-    {"name": "Plan", "description": "Define requirements, architecture, and strategies."},
+    {"name": "Plan", "description": "Define requirements and strategies."},
     {"name": "Develop", "description": "Write, review, and manage source code."},
-    {"name": "Build", "description": "Compile and package source code into artifacts."},
+    {"name": "Build", "description": "Compile and package source code."},
     {"name": "Test", "description": "Perform automated and manual testing."},
     {"name": "Release", "description": "Prepare release notes and approvals."},
-    {"name": "Deploy", "description": "Deploy application to production environments."},
-    {"name": "Operate", "description": "Manage infrastructure and ensure availability."},
-    {"name": "Monitor", "description": "Collect logs, metrics, and feedback for improvement."}
+    {"name": "Deploy", "description": "Deploy applications to production."},
+    {"name": "Operate", "description": "Manage infrastructure and availability."},
+    {"name": "Monitor", "description": "Collect logs, metrics, and feedback."}
 ]
 
 LEARNING_STEPS = [
-    {"step": "Learn Linux & Command Line", "details": "Get comfortable with shell scripting and basic Linux commands."},
-    {"step": "Understand Version Control", "details": "Learn Git and platforms like GitHub/GitLab/Bitbucket."},
-    {"step": "Master CI/CD", "details": "Understand Jenkins, GitHub Actions, GitLab CI/CD, and automation pipelines."},
-    {"step": "Learn Containerization", "details": "Study Docker and container orchestration with Kubernetes."},
-    {"step": "Understand Cloud Platforms", "details": "Familiarize yourself with AWS, Azure, or Google Cloud."},
-    {"step": "Infrastructure as Code (IaC)", "details": "Learn Terraform, Ansible, and CloudFormation."},
-    {"step": "Monitoring & Logging", "details": "Understand Prometheus, Grafana, ELK Stack, and Datadog."},
-    {"step": "Security & Best Practices", "details": "Explore DevSecOps, security policies, and compliance."}
+    {"step": "Learn Linux & Shell", "details": "Get comfortable with basic Linux commands."},
+    {"step": "Master Git", "details": "Understand version control systems like Git & GitHub."},
+    {"step": "CI/CD Basics", "details": "Learn Jenkins, GitHub Actions, and automation."},
+    {"step": "Understand Containers", "details": "Docker and Kubernetes basics."},
+    {"step": "Explore Cloud", "details": "Familiarize with AWS, Azure, or Google Cloud."},
+    {"step": "IaC & Automation", "details": "Terraform, Ansible, and scripting."},
+    {"step": "Monitoring & Logging", "details": "Prometheus, Grafana, and ELK stack."},
+    {"step": "Security & Best Practices", "details": "Learn DevSecOps and compliance."}
 ]
 
 HTML_TEMPLATE = """
@@ -30,63 +30,65 @@ HTML_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Lifecycle & Learning Path</title>
+    <title>DevOps Lifecycle & Learning</title>
     <style>
         body { 
             font-family: 'Arial', sans-serif; 
             text-align: center; 
             margin: 0; 
-            padding: 0; 
+            padding: 20px; 
             background: linear-gradient(135deg, #1e3c72, #2a5298); 
             color: white;
         }
         h1, h2 { 
-            margin: 20px 0; 
-            font-size: 2.5em; 
+            margin: 10px 0; 
+            font-size: 1.8em; 
         }
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            padding: 20px;
+            gap: 10px;
+            padding: 10px;
         }
         .stage, .learning-step { 
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px; 
-            padding: 20px; 
-            width: 280px; 
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px; 
+            padding: 12px; 
+            width: 160px; 
             transition: transform 0.3s, background 0.3s;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
             position: relative;
+            font-size: 0.85em;
         }
         .stage:hover, .learning-step:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
         }
         h3 { 
-            margin-bottom: 10px; 
-            font-size: 1.5em;
+            margin-bottom: 5px; 
+            font-size: 1em;
         }
         p { 
-            font-size: 1em; 
+            font-size: 0.85em; 
             opacity: 0.9; 
+            margin: 5px 0;
         }
         .number {
             position: absolute;
-            top: -10px;
-            left: -10px;
+            top: -8px;
+            left: -8px;
             background: #FFD700;
             color: #333;
-            font-size: 1.2em;
+            font-size: 0.9em;
             font-weight: bold;
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
