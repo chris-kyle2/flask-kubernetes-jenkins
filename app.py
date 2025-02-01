@@ -42,85 +42,50 @@ HTML_TEMPLATE = """
         }
         h1, h2 { 
             margin: 10px 0; 
-            font-size: 1.8em; 
+            font-size: 2em; 
         }
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
             padding: 10px;
+            max-width: 90%;
+            margin: auto;
         }
-        .stage, .learning-step { 
+        .card { 
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 8px; 
-            padding: 12px; 
-            width: 160px; 
+            border-radius: 10px; 
+            padding: 15px; 
             transition: transform 0.3s, background 0.3s;
-            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             position: relative;
-            font-size: 0.85em;
+            font-size: 1em;
         }
-        .stage:hover, .learning-step:hover {
+        .card:hover {
             transform: scale(1.05);
             background: rgba(255, 255, 255, 0.25);
         }
         h3 { 
             margin-bottom: 5px; 
-            font-size: 1em;
+            font-size: 1.2em;
         }
         p { 
-            font-size: 0.85em; 
+            font-size: 0.9em; 
             opacity: 0.9; 
             margin: 5px 0;
         }
         .number {
             position: absolute;
-            top: -8px;
-            left: -8px;
+            top: -10px;
+            left: -10px;
             background: #FFD700;
             color: #333;
-            font-size: 0.9em;
+            font-size: 1em;
             font-weight: bold;
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-<body>
-    <h1>DevOps Lifecycle</h1>
-    <div class="container">
-        {% for stage in stages %}
-            <div class="stage">
-                <div class="number">{{ loop.index }}</div>
-                <h3>{{ stage.name }}</h3>
-                <p>{{ stage.description }}</p>
-            </div>
-        {% endfor %}
-    </div>
-
-    <h2>How to Learn DevOps</h2>
-    <div class="container">
-        {% for step in learning_steps %}
-            <div class="learning-step">
-                <div class="number">{{ loop.index }}</div>
-                <h3>{{ step.step }}</h3>
-                <p>{{ step.details }}</p>
-            </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
-"""
-
-@app.route('/')
-def home():
-    return render_template_string(HTML_TEMPLATE, stages=DEVOPS_STAGES, learning_steps=LEARNING_STEPS)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+            box-shadow: 0px 3px 8px
