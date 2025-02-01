@@ -13,13 +13,24 @@ DEVOPS_STAGES = [
     {"name": "Monitor", "description": "Collect logs, metrics, and feedback for improvement."}
 ]
 
+LEARNING_STEPS = [
+    {"step": "Learn Linux & Command Line", "details": "Get comfortable with shell scripting and basic Linux commands."},
+    {"step": "Understand Version Control", "details": "Learn Git and platforms like GitHub/GitLab/Bitbucket."},
+    {"step": "Master CI/CD", "details": "Understand Jenkins, GitHub Actions, GitLab CI/CD, and automation pipelines."},
+    {"step": "Learn Containerization", "details": "Study Docker and container orchestration with Kubernetes."},
+    {"step": "Understand Cloud Platforms", "details": "Familiarize yourself with AWS, Azure, or Google Cloud."},
+    {"step": "Infrastructure as Code (IaC)", "details": "Learn Terraform, Ansible, and CloudFormation."},
+    {"step": "Monitoring & Logging", "details": "Understand Prometheus, Grafana, ELK Stack, and Datadog."},
+    {"step": "Security & Best Practices", "details": "Explore DevSecOps, security policies, and compliance."}
+]
+
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Lifecycle</title>
+    <title>DevOps Lifecycle & Learning Path</title>
     <style>
         body { 
             font-family: 'Arial', sans-serif; 
@@ -29,7 +40,7 @@ HTML_TEMPLATE = """
             background: linear-gradient(135deg, #1e3c72, #2a5298); 
             color: white;
         }
-        h1 { 
+        h1, h2 { 
             margin: 20px 0; 
             font-size: 2.5em; 
         }
@@ -40,7 +51,7 @@ HTML_TEMPLATE = """
             gap: 15px;
             padding: 20px;
         }
-        .stage { 
+        .stage, .learning-step { 
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px; 
             padding: 20px; 
@@ -49,7 +60,7 @@ HTML_TEMPLATE = """
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             position: relative;
         }
-        .stage:hover {
+        .stage:hover, .learning-step:hover {
             transform: scale(1.05);
             background: rgba(255, 255, 255, 0.2);
         }
@@ -90,13 +101,24 @@ HTML_TEMPLATE = """
             </div>
         {% endfor %}
     </div>
+
+    <h2>How to Learn DevOps</h2>
+    <div class="container">
+        {% for step in learning_steps %}
+            <div class="learning-step">
+                <div class="number">{{ loop.index }}</div>
+                <h3>{{ step.step }}</h3>
+                <p>{{ step.details }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
 """
 
 @app.route('/')
 def home():
-    return render_template_string(HTML_TEMPLATE, stages=DEVOPS_STAGES)
+    return render_template_string(HTML_TEMPLATE, stages=DEVOPS_STAGES, learning_steps=LEARNING_STEPS)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
