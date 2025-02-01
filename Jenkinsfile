@@ -13,7 +13,7 @@ pipeline{
                 checkout scm
             }
         }
-        stages {
+        
         stage('Setup') {
             steps {
                 sh 'ls -la $KUBECONFIG'
@@ -75,4 +75,4 @@ stage('Apply Kubernetes Manifest') {
     }
                 
   }
-}
+
