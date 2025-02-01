@@ -1,11 +1,11 @@
 pipeline{
     agent any
-    environment{
-        // IMAGE_NAME = '22monk/jenkins-pipeline'
-        // IMAGE_TAG = "${IMAGE_NAME}:${env.GIT_COMMIT}"
-        // KUBECONFIG = credentials('kubeconfig')
+    // environment{
+    //     // IMAGE_NAME = '22monk/jenkins-pipeline'
+    //     // IMAGE_TAG = "${IMAGE_NAME}:${env.GIT_COMMIT}"
+    //     // KUBECONFIG = credentials('kubeconfig')
 
-    }
+    // }
     stages{
         stage('Hello world'){
             steps{
